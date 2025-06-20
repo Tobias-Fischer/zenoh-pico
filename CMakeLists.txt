@@ -87,11 +87,7 @@ string(TOUPPER ${CMAKE_BUILD_TYPE} CMAKE_BUILD_TYPE)
 
 # Compile options
 if(CMAKE_BUILD_TYPE MATCHES "RELEASE" OR "Release")
-  if(UNIX)
-    add_compile_options(-pipe -O3)
-  elseif(CMAKE_SYSTEM_NAME MATCHES "Generic")
-    add_compile_options(-pipe -O3)
-  endif()
+  add_compile_options(-pipe -O3 -Wno-missing-braces -Wno-missing-field-initializers -Wno-missing-prototypes)
 else()
   if(CMAKE_SYSTEM_NAME MATCHES "PICO")
     add_compile_options(-c -Wall -Wextra -Wno-unused -Wno-strict-prototypes -pipe -g -O0)
